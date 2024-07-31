@@ -31,5 +31,8 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EmployeeRole role;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
 
 }
