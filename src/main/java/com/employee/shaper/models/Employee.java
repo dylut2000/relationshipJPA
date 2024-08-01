@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,5 +39,11 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+    @ManyToMany
+    @JoinTable(name = "employee_mission",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "mission_id")
+    )
+    private List<Mission> missions = new ArrayList<>();
 
 }
